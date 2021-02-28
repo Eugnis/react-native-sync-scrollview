@@ -9,6 +9,10 @@ Small component built using Typescript and React Hooks, so need `react-native 0.
 
 Examples in examples folder and on Expo https://expo.io/@eugnis/projects/react-native-sync-scrollview-example
 
+
+![React Native Sync ScrollView Example](https://user-images.githubusercontent.com/2463830/109427037-3486d000-79f9-11eb-91db-eb65db309c40.gif)
+
+
 ## Installation
 
 ```
@@ -22,6 +26,9 @@ yarn add react-native-sync-scrollview
 ```
 
 ## Basic Usage
+
+![Screenshot_20210228-190943 (1)](https://user-images.githubusercontent.com/2463830/109427087-70ba3080-79f9-11eb-9799-d4d2fb6c9b50.png)
+
 
 To create horizontal Synchronized ScrollViews with 3 rows and with 20 +- 10 custom components each.
 
