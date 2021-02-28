@@ -1,6 +1,6 @@
 {
   "name": "react-native-sync-scrollview",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A simple and fully customizable React Native component that sync multiple scrollviews with different sizes.",
   "main": "lib/index.js",
   "scripts": {
