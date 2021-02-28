@@ -1,0 +1,45 @@
+{
+  "name": "react-native-sync-scrollview",
+  "version": "0.0.1",
+  "description": "A simple and fully customizable React Native component that sync multiple scrollviews with different sizes.",
+  "main": "build/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Eugnis/react-native-sync-scrollview.git"
+  },
+  "keywords": [
+    "react-native",
+    "react-component",
+    "react-native-component",
+    "react",
+    "react native",
+    "typescript",
+    "mobile",
+    "ios",
+    "android",
+    "ui",
+    "scrollview",
+    "sync",
+    "clubhouse-ui"
+  ],
+  "author": "Eugnis <eugenijb@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Eugnis/react-native-sync-scrollview/issues"
+  },
+  "homepage": "https://github.com/Eugnis/react-native-sync-scrollview#readme",
+  "peerDependencies": {
+    "react-native": ">= 0.59.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.8.4",
+    "@types/react": "^17.0.2",
+    "@types/react-native": "^0.63.50",
+    "react": "^16.3.1",
+    "react-native": "^0.63.4",
+    "typescript": "^4.2.2"
+  }
+}
