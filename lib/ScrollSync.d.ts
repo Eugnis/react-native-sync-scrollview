@@ -5,6 +5,8 @@ export interface ScrollSyncProps {
     rowItems: JSX.Element[][];
     /** Custom style for ScrollSync container */
     containerStyle?: StyleProp<ViewStyle>;
+    /** Custom style for ScrollViews */
+    scrollViewsStyle?: StyleProp<ViewStyle>;
     /** Choose Horizontal or Vertical type, default is Horizontal */
     type?: 'horizontal' | 'vertical';
 }
@@ -25,4 +27,4 @@ export interface ScrollSyncProps {
  * <ScrollSync rowItems={rowItems} containerStyle={styles.scrollSync} />
  * ```
  */
-export declare function ScrollSync({ rowItems, containerStyle, type }: ScrollSyncProps): JSX.Element;
+export declare function ScrollSync({ rowItems, containerStyle, scrollViewsStyle, type }: ScrollSyncProps): JSX.Element;

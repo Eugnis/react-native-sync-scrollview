@@ -9,6 +9,8 @@ export interface ScrollSyncProps {
     rowItems: JSX.Element[][];
     /** Custom style for ScrollSync container */
     containerStyle?: StyleProp<ViewStyle>;
+    /** Custom style for ScrollViews */
+    scrollViewsStyle?: StyleProp<ViewStyle>;
     /** Choose Horizontal or Vertical type, default is Horizontal */
     type?: 'horizontal' | 'vertical';
 }
@@ -30,7 +32,7 @@ export interface ScrollSyncProps {
  * <ScrollSync rowItems={rowItems} containerStyle={styles.scrollSync} />
  * ```
  */
-export function ScrollSync({ rowItems, containerStyle, type = 'horizontal' }: ScrollSyncProps) {
+export function ScrollSync({ rowItems, containerStyle, scrollViewsStyle, type = 'horizontal' }: ScrollSyncProps) {
     const [contentPosition, setContentPosition] = React.useState(-1);
     const [scrollLengths, setScrollLengths] = React.useState<Map<number, number>>(new Map());
     const itemsRef = React.useRef<Array<ScrollView | null>>([]);
@@ -44,24 +46,24 @@ export function ScrollSync({ rowItems, containerStyle, type = 'horizontal' }: Sc
             event.preventDefault();
             return;
         }
-        const scrollableCoord = type==='horizontal' ? event.nativeEvent.contentOffset.x : event.nativeEvent.contentOffset.y;
-        const viewSize = type==='horizontal' ? event.nativeEvent.layoutMeasurement.width : event.nativeEvent.layoutMeasurement.height;
-        const contentSize = type==='horizontal' ? event.nativeEvent.contentSize.width : event.nativeEvent.layoutMeasurement.height;
-        const percentScroll = scrollableCoord / (contentSize - viewSize)
+        const scrollableCoord = type === 'horizontal' ? event.nativeEvent.contentOffset.x : event.nativeEvent.contentOffset.y;
+        const viewSize = type === 'horizontal' ? event.nativeEvent.layoutMeasurement.width : event.nativeEvent.layoutMeasurement.height;
+        const contentSize = type === 'horizontal' ? event.nativeEvent.contentSize.width : event.nativeEvent.contentSize.height;
+        const percentScroll = scrollableCoord / (contentSize - viewSize);
         for (let index = 0; index < itemsRef.current.length; index++) {
             if (index === num) continue;
             const element = itemsRef.current[index];
             if (element) {
                 const elLength = (scrollLengths.get(index) || 0) - viewSize;
                 const scrollOffset = percentScroll * elLength;
-                element.scrollTo(type==='horizontal' ? { x: scrollOffset } : { y: scrollOffset })
+                element.scrollTo(type === 'horizontal' ? { x: scrollOffset } : { y: scrollOffset })
             }
         }
     };
     /**
-     * 
-     * @param length 
-     * @param num 
+     * Store content position
+     * @param length Content position
+     * @param num Number of Row
      */
     const storeContentLength = (length: number, num: number) => {
         scrollLengths.set(num, length);
@@ -73,13 +75,14 @@ export function ScrollSync({ rowItems, containerStyle, type = 'horizontal' }: Sc
                 <ScrollView
                     key={`scRow_${rowI}`}
                     ref={(el: ScrollView | null) => itemsRef.current[rowI] = el}
-                    onContentSizeChange={(w: number, h: number) => storeContentLength(type==='horizontal' ? w : h, rowI)}
+                    onContentSizeChange={(w: number, h: number) => storeContentLength(type === 'horizontal' ? w : h, rowI)}
                     onScrollBeginDrag={() => setContentPosition(rowI)}
                     onScrollAnimationEnd={() => setContentPosition(-1)}
                     onScroll={(e: NativeSyntheticEvent<NativeScrollEvent>) => onScroll(e, rowI)}
-                    horizontal={type==='horizontal'}
+                    horizontal={type === 'horizontal'}
                     showsHorizontalScrollIndicator={false}
                     showsVerticalScrollIndicator={false}
+                    style={scrollViewsStyle}
                     scrollEventThrottle={16}>
                     {items}
                 </ScrollView>)}
