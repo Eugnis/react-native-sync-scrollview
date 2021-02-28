@@ -3,7 +3,7 @@ import { StyleProp, ViewStyle } from 'react-native';
 
 import { NativeScrollEvent, NativeSyntheticEvent, ScrollView, View } from 'react-native';
 
-export default function ScrollSync({rowItems, containerStyle}: {rowItems: JSX.Element[][], containerStyle?: StyleProp<ViewStyle>}) {
+export function ScrollSync({rowItems, containerStyle}: {rowItems: JSX.Element[][], containerStyle?: StyleProp<ViewStyle>}) {
     const [contentPosition, setContentPosition] = React.useState(-1);
     const [scrollWidths, setScrollWidths] = React.useState<Map<number, number>>(new Map());
     const itemsRef = React.useRef<Array<ScrollView | null>>([]);
