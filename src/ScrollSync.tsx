@@ -52,9 +52,9 @@ export function ScrollSync({ rowItems, containerStyle, type = 'horizontal' }: Sc
             if (index === num) continue;
             const element = itemsRef.current[index];
             if (element) {
-                const elWidth = (scrollLengths.get(index) || 0) - viewSize;
-                const scrollOffset = percentScroll * elWidth;
-                element.scrollTo({ x: scrollOffset })
+                const elLength = (scrollLengths.get(index) || 0) - viewSize;
+                const scrollOffset = percentScroll * elLength;
+                element.scrollTo(type==='horizontal' ? { x: scrollOffset } : { y: scrollOffset })
             }
         }
     };
